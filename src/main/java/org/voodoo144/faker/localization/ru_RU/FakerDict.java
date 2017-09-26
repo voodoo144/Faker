@@ -1,11 +1,8 @@
-import org.apache.commons.lang3.RandomStringUtils;
+package org.voodoo144.faker.localization.ru_RU;
 
-import java.util.Calendar;
-import java.util.Random;
+import org.voodoo144.faker.core.IFakerDict;
 
-public class Faker {
-
-    private static Random random = new Random();
+public class FakerDict implements IFakerDict {
 
     private static String[] words = {"alias", "consequatur", "aut", "perferendis", "sit", "voluptatem",
             "accusantium", "doloremque", "aperiam", "eaque", "ipsa", "quae", "ab",
@@ -104,7 +101,7 @@ public class Faker {
             "Сергеевич", "Иванович", "Фёдорович", "Львович", "Романович", "Владимирович",
             "Борисович", "Максимович"};
 
-
+    private static String[] namePrefix ={"мистер","миссис"};
     private static String[] cityPrefix = {"город"};
 
     private static String[] regionSuffix = {"область"};
@@ -113,9 +110,7 @@ public class Faker {
             "пер.", "ул.", "пр.", "шоссе", "пл.", "бульвар",
             "въезд", "спуск", "проезд", "наб."};
 
-    private static String[] buildingNumber = {"##"};
-
-    private static String[] postcode = {"######"};
+    private static String postcodeFormat = "######";
 
     private static String[] country = {
             "Украина", "Российская Федерация", "США", "Канада", "Австралия", "Австрия",
@@ -197,106 +192,62 @@ public class Faker {
             "Космонавтов", "Гагарина", "Славы", "Бухарестская", "Будапештсткая", "Балканская", "Энгельса", "Карла Маркса", "Строителей"
     };
 
-    private static String getRandomElement(String[] elements) {
-        int idx = random.nextInt(elements.length);
-        return elements[idx];
+    private static String[] nameSuffix={"младший"};
+
+    public String[] getWords() {
+        return words;
     }
 
-    /**
-     * Return random text
-     *
-     * @return String
-     */
-    public static String text() {
-        String text = "";
-        for (int i = 0; i < 10; i++) {
-            text += " " + sentence();
-        }
-        return text.trim();
+    public String[] getFirstNames() {
+        return firstNames;
     }
 
-    public static String sentence() {
-        String sentence = "";
-        for (int i = 0; i < 5; i++) {
-            sentence += " " + word();
-        }
-        return capitalize(sentence.trim() + ".");
+    public String[] getLastNames() {
+        return lastNames;
     }
 
-    public static String word() {
-        return getRandomElement(words);
+    public String[] getMiddleNames() {
+        return middleNames;
     }
 
-    public static String email() {
-        return getRandomElement(words) + "." + getRandomElement(words) + "." + number("##") + "@example.com";
+    public String[] getCityPrefixes() {
+        return cityPrefix;
     }
 
-    public static String firstName() {
-        return getRandomElement(firstNames);
+    public String[] getRegionSuffixes() {
+        return regionSuffix;
     }
 
-    public static String lastName() {
-        return getRandomElement(lastNames);
+    public String[] getStreetPrefixes() {
+        return streetPrefix;
     }
 
-    public static String middleName() {
-        return getRandomElement(middleNames);
+    public String[] getCountries() {
+        return country;
     }
 
-    public static String date() {
-        return null;
+    public String[] getRegionsOrStates() {
+        return region;
     }
 
-    public static String dateBetween() {
-        return null;
+    public String[] getCities() {
+        return city;
     }
 
-    /**
-     * Return random number as String
-     *
-     * @param format must be String like this "### ###-##-##"
-     * @return String
-     */
-    public static String number(String format) {
-        char[] ar = format.toCharArray();
-        for (int i = 0; i < format.length(); i++) {
-            if (ar[i] == '#') {
-                ar[i] = RandomStringUtils.randomNumeric(1).charAt(0);
-            }
-        }
-        return new String(ar);
+    public String[] getStreets() {
+        return street;
     }
 
-    public static String birthdate() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, randBetween(1900, 1995));
-        calendar.set(Calendar.MONTH, randBetween(1, 12));
-        calendar.set(Calendar.DAY_OF_MONTH, randBetween(1, 28));
-        return calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH) + "-" + calendar.get(Calendar.DAY_OF_MONTH);
+    public String[] getNamePrefixes() {
+        return namePrefix;
     }
 
-    private static String capitalize(String line) {
-        return Character.toUpperCase(line.charAt(0)) + line.substring(1);
+    public String[] getNameSuffixes() {
+        return nameSuffix;
     }
 
-    public static String string(String format) {
-        char[] ar = format.toCharArray();
-        for (int i = 0; i < format.length(); i++) {
-            if (ar[i] == '#') {
-                ar[i] = RandomStringUtils.randomAlphabetic(1).charAt(0);
-            }
-        }
-        return new String(ar);
+    public String getPostCodeFormat() {
+        return postcodeFormat;
     }
 
-    public static String address() {
-        return number(getRandomElement(postcode)) + ", " + getRandomElement(region) + " " +
-                getRandomElement(regionSuffix) + ", " + getRandomElement(cityPrefix) + " " +
-                getRandomElement(city) + ", " + getRandomElement(streetPrefix) + " " +
-                getRandomElement(street) + ", " + number(getRandomElement(buildingNumber));
-    }
-
-    private static int randBetween(int start, int end) {
-        return start + random.nextInt(end - start);
-    }
 }
