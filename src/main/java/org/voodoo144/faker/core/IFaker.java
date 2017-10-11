@@ -1,7 +1,6 @@
 package org.voodoo144.faker.core;
 
 public interface IFaker {
-    String address();
     String city();
     String street();
     String zipCode();
@@ -9,7 +8,6 @@ public interface IFaker {
     String country();
     String streetPrefix();
     String cityPrefix();
-
 
     String firstName();
     String lastName();
@@ -20,10 +18,6 @@ public interface IFaker {
     String word();
     String sentence();
     String text();
-    String date();
-    String number();
-
-    String dateBetween();
 
     String email();
 }

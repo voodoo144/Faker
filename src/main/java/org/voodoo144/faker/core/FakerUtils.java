@@ -14,8 +14,13 @@ class FakerUtils {
     static int getRandomInt(){
         return random.nextInt();
     }
+
     static int randBetween(int start, int end) {
         return start + random.nextInt(end - start);
+    }
+
+    static String capitalize(String line) {
+        return Character.toUpperCase(line.charAt(0)) + line.substring(1);
     }
 
 }

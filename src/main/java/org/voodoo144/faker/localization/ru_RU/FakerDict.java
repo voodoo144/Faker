@@ -101,10 +101,10 @@ public class FakerDict implements IFakerDict {
             "Сергеевич", "Иванович", "Фёдорович", "Львович", "Романович", "Владимирович",
             "Борисович", "Максимович"};
 
-    private static String[] namePrefix ={"мистер","миссис"};
+    private static String[] namePrefix = {"мистер", "миссис", "господин", "госпожа"};
     private static String[] cityPrefix = {"город"};
 
-    private static String[] regionSuffix = {"область"};
+    private static String[] regionSuffix = {"область", "край"};
 
     private static String[] streetPrefix = {
             "пер.", "ул.", "пр.", "шоссе", "пл.", "бульвар",
@@ -192,7 +192,7 @@ public class FakerDict implements IFakerDict {
             "Космонавтов", "Гагарина", "Славы", "Бухарестская", "Будапештсткая", "Балканская", "Энгельса", "Карла Маркса", "Строителей"
     };
 
-    private static String[] nameSuffix={"младший"};
+    private static String[] nameSuffix = {"младший"};
 
     public String[] getWords() {
         return words;
